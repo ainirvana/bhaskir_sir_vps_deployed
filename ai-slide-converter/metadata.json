@@ -1,0 +1,5 @@
+{
+  "name": "AI Slide Converter",
+  "description": "An intelligent application that transforms raw text input into structured presentation slides using AI. Ideal for quickly generating drafts for talks, lectures, or meetings.",
+  "requestFramePermissions": []
+}

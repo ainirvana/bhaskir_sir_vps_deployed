@@ -1,0 +1,1 @@
+as we have already have a seperate scrappers tab in the dashboard, so we sont need to have the scrapper agsin in the settings, so we can remove 'Content Scraping' from the settings, and add all the releveant features related to scrappers into the scrappers tab od dashboard itself

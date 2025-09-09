@@ -1,0 +1,201 @@
+2025-08-17T18:50:16: PM2 log: ===============================================================================
+2025-08-17T18:50:16: PM2 log: --- New PM2 Daemon started ----------------------------------------------------
+2025-08-17T18:50:16: PM2 log: Time                 : Sun Aug 17 2025 18:50:16 GMT+0000 (Coordinated Universal Time)
+2025-08-17T18:50:16: PM2 log: PM2 version          : 6.0.8
+2025-08-17T18:50:16: PM2 log: Node.js version      : 20.19.4
+2025-08-17T18:50:16: PM2 log: Current arch         : x64
+2025-08-17T18:50:16: PM2 log: PM2 home             : /root/.pm2
+2025-08-17T18:50:16: PM2 log: PM2 PID file         : /root/.pm2/pm2.pid
+2025-08-17T18:50:16: PM2 log: RPC socket file      : /root/.pm2/rpc.sock
+2025-08-17T18:50:16: PM2 log: BUS socket file      : /root/.pm2/pub.sock
+2025-08-17T18:50:16: PM2 log: Application log path : /root/.pm2/logs
+2025-08-17T18:50:16: PM2 log: Worker Interval      : 30000
+2025-08-17T18:50:16: PM2 log: Process dump file    : /root/.pm2/dump.pm2
+2025-08-17T18:50:16: PM2 log: Concurrent actions   : 2
+2025-08-17T18:50:16: PM2 log: SIGTERM timeout      : 1600
+2025-08-17T18:50:16: PM2 log: Runtime Binary       : /usr/bin/node
+2025-08-17T18:50:16: PM2 log: ===============================================================================
+2025-08-17T18:50:16: PM2 log: App [nextjs-app:0] starting in -fork mode-
+2025-08-17T18:50:16: PM2 log: App [nextjs-app:0] online
+2025-08-17T18:50:17: PM2 log: App [nextjs-app:0] exited with code [1] via signal [SIGINT]
+2025-08-17T18:50:17: PM2 log: App [nextjs-app:0] starting in -fork mode-
+2025-08-17T18:50:17: PM2 log: App [nextjs-app:0] online
+2025-08-17T18:50:17: PM2 log: App [nextjs-app:0] exited with code [1] via signal [SIGINT]
+2025-08-17T18:50:17: PM2 log: App [nextjs-app:0] starting in -fork mode-
+2025-08-17T18:50:17: PM2 log: App [nextjs-app:0] online
+2025-08-17T18:50:18: PM2 log: App [nextjs-app:0] exited with code [1] via signal [SIGINT]
+2025-08-17T18:50:18: PM2 log: App [nextjs-app:0] starting in -fork mode-
+2025-08-17T18:50:18: PM2 log: App [nextjs-app:0] online
+2025-08-17T18:50:18: PM2 log: App [nextjs-app:0] exited with code [1] via signal [SIGINT]
+2025-08-17T18:50:18: PM2 log: App [nextjs-app:0] starting in -fork mode-
+2025-08-17T18:50:18: PM2 log: App [nextjs-app:0] online
+2025-08-17T18:50:19: PM2 log: App [nextjs-app:0] exited with code [1] via signal [SIGINT]
+2025-08-17T18:50:19: PM2 log: App [nextjs-app:0] starting in -fork mode-
+2025-08-17T18:50:19: PM2 log: App [nextjs-app:0] online
+2025-08-17T18:50:19: PM2 log: App [nextjs-app:0] exited with code [1] via signal [SIGINT]
+2025-08-17T18:50:19: PM2 log: App [nextjs-app:0] starting in -fork mode-
+2025-08-17T18:50:19: PM2 log: App [nextjs-app:0] online
+2025-08-17T18:50:20: PM2 log: App [nextjs-app:0] exited with code [1] via signal [SIGINT]
+2025-08-17T18:50:20: PM2 log: App [nextjs-app:0] starting in -fork mode-
+2025-08-17T18:50:20: PM2 log: App [nextjs-app:0] online
+2025-08-17T18:50:21: PM2 log: App [nextjs-app:0] exited with code [1] via signal [SIGINT]
+2025-08-17T18:50:21: PM2 log: App [nextjs-app:0] starting in -fork mode-
+2025-08-17T18:50:21: PM2 log: App [nextjs-app:0] online
+2025-08-17T18:50:21: PM2 log: App [nextjs-app:0] exited with code [1] via signal [SIGINT]
+2025-08-17T18:50:21: PM2 log: App [nextjs-app:0] starting in -fork mode-
+2025-08-17T18:50:21: PM2 log: App [nextjs-app:0] online
+2025-08-17T18:50:22: PM2 log: App [nextjs-app:0] exited with code [1] via signal [SIGINT]
+2025-08-17T18:50:22: PM2 log: App [nextjs-app:0] starting in -fork mode-
+2025-08-17T18:50:22: PM2 log: App [nextjs-app:0] online
+2025-08-17T18:50:22: PM2 log: App [nextjs-app:0] exited with code [1] via signal [SIGINT]
+2025-08-17T18:50:22: PM2 log: App [nextjs-app:0] starting in -fork mode-
+2025-08-17T18:50:22: PM2 log: App [nextjs-app:0] online
+2025-08-17T18:50:23: PM2 log: App [nextjs-app:0] exited with code [1] via signal [SIGINT]
+2025-08-17T18:50:23: PM2 log: App [nextjs-app:0] starting in -fork mode-
+2025-08-17T18:50:23: PM2 log: App [nextjs-app:0] online
+2025-08-17T18:50:23: PM2 log: App [nextjs-app:0] exited with code [1] via signal [SIGINT]
+2025-08-17T18:50:23: PM2 log: App [nextjs-app:0] starting in -fork mode-
+2025-08-17T18:50:23: PM2 log: App [nextjs-app:0] online
+2025-08-17T18:50:24: PM2 log: App [nextjs-app:0] exited with code [1] via signal [SIGINT]
+2025-08-17T18:50:24: PM2 log: App [nextjs-app:0] starting in -fork mode-
+2025-08-17T18:50:24: PM2 log: App [nextjs-app:0] online
+2025-08-17T18:50:25: PM2 log: App [nextjs-app:0] exited with code [1] via signal [SIGINT]
+2025-08-17T18:50:25: PM2 log: App [nextjs-app:0] starting in -fork mode-
+2025-08-17T18:50:25: PM2 log: App [nextjs-app:0] online
+2025-08-17T18:50:25: PM2 log: App [nextjs-app:0] exited with code [1] via signal [SIGINT]
+2025-08-17T18:50:25: PM2 log: Script /usr/bin/npm had too many unstable restarts (16). Stopped. "errored"
+2025-08-17T18:52:45: PM2 log: Stopping app:nextjs-app id:0
+2025-08-17T18:52:45: PM2 error: app=nextjs-app id=0 does not have a pid
+2025-08-17T18:53:43: PM2 log: App [nextjs-app:1] starting in -fork mode-
+2025-08-17T18:53:43: PM2 log: App [nextjs-app:1] online
+2025-08-17T18:56:24: PM2 log: App [nextjs-app:0] starting in -fork mode-
+2025-08-17T18:56:24: PM2 log: App [nextjs-app:0] online
+2025-08-17T18:56:24: PM2 log: Stopping app:nextjs-app id:1
+2025-08-17T18:56:24: PM2 log: App [nextjs-app:1] exited with code [0] via signal [SIGINT]
+2025-08-17T18:56:24: PM2 log: pid=20460 msg=process killed
+2025-08-17T18:56:24: PM2 log: App [nextjs-app:1] starting in -fork mode-
+2025-08-17T18:56:24: PM2 log: App [nextjs-app:1] online
+2025-08-17T18:56:25: PM2 log: App [nextjs-app:1] exited with code [1] via signal [SIGINT]
+2025-08-17T18:56:25: PM2 log: App [nextjs-app:1] starting in -fork mode-
+2025-08-17T18:56:25: PM2 log: App [nextjs-app:1] online
+2025-08-17T18:56:26: PM2 log: App [nextjs-app:1] exited with code [1] via signal [SIGINT]
+2025-08-17T18:56:26: PM2 log: App [nextjs-app:1] starting in -fork mode-
+2025-08-17T18:56:26: PM2 log: App [nextjs-app:1] online
+2025-08-17T18:56:26: PM2 log: App [nextjs-app:1] exited with code [1] via signal [SIGINT]
+2025-08-17T18:56:26: PM2 log: App [nextjs-app:1] starting in -fork mode-
+2025-08-17T18:56:26: PM2 log: App [nextjs-app:1] online
+2025-08-17T18:56:27: PM2 log: App [nextjs-app:1] exited with code [1] via signal [SIGINT]
+2025-08-17T18:56:27: PM2 log: App [nextjs-app:1] starting in -fork mode-
+2025-08-17T18:56:27: PM2 log: App [nextjs-app:1] online
+2025-08-17T18:56:27: PM2 log: App [nextjs-app:1] exited with code [1] via signal [SIGINT]
+2025-08-17T18:56:27: PM2 log: App [nextjs-app:1] starting in -fork mode-
+2025-08-17T18:56:27: PM2 log: App [nextjs-app:1] online
+2025-08-17T18:56:28: PM2 log: App [nextjs-app:1] exited with code [1] via signal [SIGINT]
+2025-08-17T18:56:28: PM2 log: App [nextjs-app:1] starting in -fork mode-
+2025-08-17T18:56:28: PM2 log: App [nextjs-app:1] online
+2025-08-17T18:56:28: PM2 log: App [nextjs-app:1] exited with code [1] via signal [SIGINT]
+2025-08-17T18:56:28: PM2 log: App [nextjs-app:1] starting in -fork mode-
+2025-08-17T18:56:28: PM2 log: App [nextjs-app:1] online
+2025-08-17T18:56:29: PM2 log: App [nextjs-app:1] exited with code [1] via signal [SIGINT]
+2025-08-17T18:56:29: PM2 log: App [nextjs-app:1] starting in -fork mode-
+2025-08-17T18:56:29: PM2 log: App [nextjs-app:1] online
+2025-08-17T18:56:29: PM2 log: App [nextjs-app:1] exited with code [1] via signal [SIGINT]
+2025-08-17T18:56:29: PM2 log: App [nextjs-app:1] starting in -fork mode-
+2025-08-17T18:56:29: PM2 log: App [nextjs-app:1] online
+2025-08-17T18:56:30: PM2 log: App [nextjs-app:1] exited with code [1] via signal [SIGINT]
+2025-08-17T18:56:30: PM2 log: App [nextjs-app:1] starting in -fork mode-
+2025-08-17T18:56:30: PM2 log: App [nextjs-app:1] online
+2025-08-17T18:56:30: PM2 log: App [nextjs-app:1] exited with code [1] via signal [SIGINT]
+2025-08-17T18:56:30: PM2 log: App [nextjs-app:1] starting in -fork mode-
+2025-08-17T18:56:30: PM2 log: App [nextjs-app:1] online
+2025-08-17T18:56:31: PM2 log: App [nextjs-app:1] exited with code [1] via signal [SIGINT]
+2025-08-17T18:56:31: PM2 log: App [nextjs-app:1] starting in -fork mode-
+2025-08-17T18:56:31: PM2 log: App [nextjs-app:1] online
+2025-08-17T18:56:31: PM2 log: App [nextjs-app:1] exited with code [1] via signal [SIGINT]
+2025-08-17T18:56:31: PM2 log: App [nextjs-app:1] starting in -fork mode-
+2025-08-17T18:56:31: PM2 log: App [nextjs-app:1] online
+2025-08-17T18:56:31: PM2 log: App [nextjs-app:1] exited with code [1] via signal [SIGINT]
+2025-08-17T18:56:31: PM2 log: App [nextjs-app:1] starting in -fork mode-
+2025-08-17T18:56:31: PM2 log: App [nextjs-app:1] online
+2025-08-17T18:56:32: PM2 log: App [nextjs-app:1] exited with code [1] via signal [SIGINT]
+2025-08-17T18:56:32: PM2 log: App [nextjs-app:1] starting in -fork mode-
+2025-08-17T18:56:32: PM2 log: App [nextjs-app:1] online
+2025-08-17T18:56:32: PM2 log: App [nextjs-app:1] exited with code [1] via signal [SIGINT]
+2025-08-17T18:56:32: PM2 log: Script /usr/bin/npm had too many unstable restarts (16). Stopped. "errored"
+2025-08-17T19:07:53: PM2 log: Stopping app:nextjs-app id:0
+2025-08-17T19:07:53: PM2 log: App [nextjs-app:0] exited with code [0] via signal [SIGINT]
+2025-08-17T19:07:53: PM2 log: pid=20504 msg=process killed
+2025-08-17T19:07:53: PM2 log: App [nextjs-app:0] starting in -fork mode-
+2025-08-17T19:07:53: PM2 log: App [nextjs-app:0] online
+2025-08-17T19:07:53: PM2 log: App [nextjs-app:1] starting in -fork mode-
+2025-08-17T19:07:53: PM2 log: App [nextjs-app:1] online
+2025-08-17T19:07:54: PM2 log: App [nextjs-app:0] exited with code [1] via signal [SIGINT]
+2025-08-17T19:07:54: PM2 log: App [nextjs-app:0] starting in -fork mode-
+2025-08-17T19:07:54: PM2 log: App [nextjs-app:0] online
+2025-08-17T19:07:55: PM2 log: App [nextjs-app:0] exited with code [1] via signal [SIGINT]
+2025-08-17T19:07:55: PM2 log: App [nextjs-app:0] starting in -fork mode-
+2025-08-17T19:07:55: PM2 log: App [nextjs-app:0] online
+2025-08-17T19:07:55: PM2 log: App [nextjs-app:0] exited with code [1] via signal [SIGINT]
+2025-08-17T19:07:55: PM2 log: App [nextjs-app:0] starting in -fork mode-
+2025-08-17T19:07:55: PM2 log: App [nextjs-app:0] online
+2025-08-17T19:07:56: PM2 log: App [nextjs-app:0] exited with code [1] via signal [SIGINT]
+2025-08-17T19:07:56: PM2 log: App [nextjs-app:0] starting in -fork mode-
+2025-08-17T19:07:56: PM2 log: App [nextjs-app:0] online
+2025-08-17T19:07:56: PM2 log: App [nextjs-app:0] exited with code [1] via signal [SIGINT]
+2025-08-17T19:07:56: PM2 log: App [nextjs-app:0] starting in -fork mode-
+2025-08-17T19:07:56: PM2 log: App [nextjs-app:0] online
+2025-08-17T19:07:57: PM2 log: App [nextjs-app:0] exited with code [1] via signal [SIGINT]
+2025-08-17T19:07:57: PM2 log: App [nextjs-app:0] starting in -fork mode-
+2025-08-17T19:07:57: PM2 log: App [nextjs-app:0] online
+2025-08-17T19:07:57: PM2 log: App [nextjs-app:0] exited with code [1] via signal [SIGINT]
+2025-08-17T19:07:57: PM2 log: App [nextjs-app:0] starting in -fork mode-
+2025-08-17T19:07:57: PM2 log: App [nextjs-app:0] online
+2025-08-17T19:07:58: PM2 log: App [nextjs-app:0] exited with code [1] via signal [SIGINT]
+2025-08-17T19:07:58: PM2 log: App [nextjs-app:0] starting in -fork mode-
+2025-08-17T19:07:58: PM2 log: App [nextjs-app:0] online
+2025-08-17T19:07:58: PM2 log: App [nextjs-app:0] exited with code [1] via signal [SIGINT]
+2025-08-17T19:07:58: PM2 log: App [nextjs-app:0] starting in -fork mode-
+2025-08-17T19:07:58: PM2 log: App [nextjs-app:0] online
+2025-08-17T19:07:58: PM2 log: App [nextjs-app:0] exited with code [1] via signal [SIGINT]
+2025-08-17T19:07:58: PM2 log: App [nextjs-app:0] starting in -fork mode-
+2025-08-17T19:07:58: PM2 log: App [nextjs-app:0] online
+2025-08-17T19:07:59: PM2 log: App [nextjs-app:0] exited with code [1] via signal [SIGINT]
+2025-08-17T19:07:59: PM2 log: App [nextjs-app:0] starting in -fork mode-
+2025-08-17T19:07:59: PM2 log: App [nextjs-app:0] online
+2025-08-17T19:07:59: PM2 log: App [nextjs-app:0] exited with code [1] via signal [SIGINT]
+2025-08-17T19:07:59: PM2 log: App [nextjs-app:0] starting in -fork mode-
+2025-08-17T19:07:59: PM2 log: App [nextjs-app:0] online
+2025-08-17T19:08:00: PM2 log: App [nextjs-app:0] exited with code [1] via signal [SIGINT]
+2025-08-17T19:08:00: PM2 log: App [nextjs-app:0] starting in -fork mode-
+2025-08-17T19:08:00: PM2 log: App [nextjs-app:0] online
+2025-08-17T19:08:00: PM2 log: App [nextjs-app:0] exited with code [1] via signal [SIGINT]
+2025-08-17T19:08:00: PM2 log: App [nextjs-app:0] starting in -fork mode-
+2025-08-17T19:08:00: PM2 log: App [nextjs-app:0] online
+2025-08-17T19:08:01: PM2 log: App [nextjs-app:0] exited with code [1] via signal [SIGINT]
+2025-08-17T19:08:01: PM2 log: App [nextjs-app:0] starting in -fork mode-
+2025-08-17T19:08:01: PM2 log: App [nextjs-app:0] online
+2025-08-17T19:08:01: PM2 log: App [nextjs-app:0] exited with code [1] via signal [SIGINT]
+2025-08-17T19:08:01: PM2 log: Script /usr/bin/npm had too many unstable restarts (16). Stopped. "errored"
+2025-08-17T19:18:01: PM2 log: Stopping app:nextjs-app id:0
+2025-08-17T19:18:01: PM2 error: app=nextjs-app id=0 does not have a pid
+2025-08-17T19:18:01: PM2 log: Stopping app:nextjs-app id:1
+2025-08-17T19:18:01: PM2 log: App [nextjs-app:1] exited with code [0] via signal [SIGINT]
+2025-08-17T19:18:01: PM2 log: pid=21169 msg=process killed
+2025-08-17T19:18:14: PM2 log: App [nextjs-app:0] starting in -fork mode-
+2025-08-17T19:18:14: PM2 log: App [nextjs-app:0] online
+2025-09-01T18:50:17: PM2 log: [PM2] This PM2 is not UP TO DATE
+2025-09-01T18:50:17: PM2 log: [PM2] Upgrade to version 6.0.9
+2025-09-02T18:50:17: PM2 log: [PM2] This PM2 is not UP TO DATE
+2025-09-02T18:50:17: PM2 log: [PM2] Upgrade to version 6.0.10
+2025-09-03T18:50:17: PM2 log: [PM2] This PM2 is not UP TO DATE
+2025-09-03T18:50:17: PM2 log: [PM2] Upgrade to version 6.0.10
+2025-09-04T18:50:17: PM2 log: [PM2] This PM2 is not UP TO DATE
+2025-09-04T18:50:17: PM2 log: [PM2] Upgrade to version 6.0.10
+2025-09-05T18:50:17: PM2 log: [PM2] This PM2 is not UP TO DATE
+2025-09-05T18:50:17: PM2 log: [PM2] Upgrade to version 6.0.10
+2025-09-06T18:50:17: PM2 log: [PM2] This PM2 is not UP TO DATE
+2025-09-06T18:50:17: PM2 log: [PM2] Upgrade to version 6.0.10
+2025-09-07T18:50:17: PM2 log: [PM2] This PM2 is not UP TO DATE
+2025-09-07T18:50:17: PM2 log: [PM2] Upgrade to version 6.0.10
+2025-09-08T18:50:17: PM2 log: [PM2] This PM2 is not UP TO DATE
+2025-09-08T18:50:17: PM2 log: [PM2] Upgrade to version 6.0.10

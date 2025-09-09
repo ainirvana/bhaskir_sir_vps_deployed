@@ -1,0 +1,12 @@
+[
+  {
+    "url": "https://example.com/educational-content-1",
+    "title": "Introduction to Machine Learning",
+    "content": "Machine learning is a subfield of artificial intelligence that focuses on developing algorithms and statistical models that enable computers to perform tasks without explicit instructions. Instead, these systems learn from patterns in data.\n\nThis content would typically be more extensive and could be used to generate educational slides or quizzes within the platform."
+  },
+  {
+    "url": "https://example.com/educational-content-2",
+    "title": "Web Development Fundamentals",
+    "content": "Web development involves creating websites and web applications. It encompasses several aspects including web design, web publishing, web programming, and database management.\n\nFrontend development focuses on the client-side of applications, using technologies like HTML, CSS, and JavaScript to create user interfaces that are both functional and visually appealing.\n\nBackend development deals with server-side programming, databases, and application logic that powers the functionality of a website or web application."
+  }
+]
