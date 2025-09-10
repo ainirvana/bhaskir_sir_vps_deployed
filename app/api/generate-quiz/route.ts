@@ -217,17 +217,24 @@ export async function POST(req: NextRequest) {
       quizTitle: title,
       quizSynopsis: `This quiz contains ${allQuestions.length} questions based on ${quizArticleTitles.length} article${quizArticleTitles.length !== 1 ? 's' : ''}.`,
       nrOfQuestions: allQuestions.length.toString(),
-      questions: allQuestions.map((q, index) => ({
-        question: q.question,
-        questionType: "text",
-        answerSelectionType: "single",
-        answers: q.options,
-        correctAnswer: q.correctAnswerIndex, // Use 0-based index as number
-        messageForCorrectAnswer: "Correct answer. Good job.",
-        messageForIncorrectAnswer: "Incorrect answer. Please try again.",
-        explanation: q.explanation || "No explanation provided.",
-        point: 10
-      })),
+      questions: allQuestions.map((q, index) => {
+        // Ensure correct answer index is properly set
+        const correctIndex = q.correctAnswerIndex !== undefined ? q.correctAnswerIndex : 0;
+        return {
+          id: `q_${index}`,
+          question: q.question,
+          questionType: "text",
+          answerSelectionType: "single",
+          options: q.options || [], // Use 'options' as primary
+          answers: q.options || [], // Keep both for compatibility
+          correctAnswer: correctIndex, // For react-quiz-component (0-based index)
+          correctAnswerIndex: correctIndex, // For our custom component (0-based index)
+          messageForCorrectAnswer: "Correct answer. Good job.",
+          messageForIncorrectAnswer: "Incorrect answer. Please try again.",
+          explanation: q.explanation || "No explanation provided.",
+          point: 10
+        };
+      }),
       articleIds,
       articleTitles: quizArticleTitles,
       createdAt: new Date().toISOString(),
@@ -253,7 +260,15 @@ export async function POST(req: NextRequest) {
           id: quizId,
           title: quiz.quizTitle,
           description: quiz.quizSynopsis,
-          quiz_data: quiz,
+          quiz_data: {
+            ...quiz,
+            questions: quiz.questions.map(q => ({
+              ...q,
+              // Ensure both formats are consistent
+              correctAnswer: q.correctAnswerIndex,
+              correctAnswerIndex: q.correctAnswerIndex
+            }))
+          },
           questions: quiz.questions,
           article_ids: articleIds,
           is_published: false,

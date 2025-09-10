@@ -12,12 +12,14 @@ import { Brain, Clock, CheckCircle, XCircle, ArrowLeft, ArrowRight } from 'lucid
 import Link from 'next/link';
 
 interface Question {
-  id: string;
+  id?: string;
   question: string;
-  options: string[];
-  correctAnswerIndex: number;
+  options?: string[];
+  answers?: string[]; // For compatibility with react-quiz-component
+  correctAnswerIndex?: number;
+  correctAnswer?: number; // For compatibility with react-quiz-component
   explanation?: string;
-  point: number;
+  point?: number;
 }
 
 interface Quiz {
@@ -132,8 +134,25 @@ export default function StudentQuizDetailPage() {
     const total = quiz.quiz_data.questions.length;
     
     quiz.quiz_data.questions.forEach((question, index) => {
+      // Get the correct answer index (handle both formats, ensure it's a number)
+      let correctAnswerIndex = question.correctAnswerIndex;
+      if (correctAnswerIndex === undefined || correctAnswerIndex === null) {
+        correctAnswerIndex = question.correctAnswer;
+      }
+      
+      // Convert to number if it's a string
+      if (typeof correctAnswerIndex === 'string') {
+        correctAnswerIndex = parseInt(correctAnswerIndex, 10);
+      }
+      
+      // Ensure we have a valid number
+      if (typeof correctAnswerIndex !== 'number' || isNaN(correctAnswerIndex)) {
+        console.warn(`Invalid correct answer index for question ${index}:`, correctAnswerIndex);
+        return; // Skip this question
+      }
+      
       // Only count as correct if answer exists and matches correct answer
-      if (answers[index] !== undefined && answers[index] === question.correctAnswerIndex) {
+      if (answers[index] !== undefined && answers[index] === correctAnswerIndex) {
         correct++;
       }
     });
@@ -198,43 +217,71 @@ export default function StudentQuizDetailPage() {
             </div>
             
             <div className="space-y-4">
-              {quiz.quiz_data?.questions?.map((question, index) => (
-                <Card key={index} className={`border-l-4 ${
-                  answers[index] === question.correctAnswerIndex 
-                    ? 'border-l-green-500' 
-                    : 'border-l-red-500'
-                }`}>
-                  <CardContent className="pt-4">
-                    <div className="flex items-start gap-2 mb-2">
-                      {answers[index] === question.correctAnswerIndex ? (
-                        <CheckCircle className="h-5 w-5 text-green-500 mt-0.5" />
-                      ) : (
-                        <XCircle className="h-5 w-5 text-red-500 mt-0.5" />
-                      )}
-                      <div className="flex-1">
-                        <p className="font-medium">{question.question}</p>
-                        <div className="mt-2 space-y-1">
-                          <p className="text-sm">
-                            <span className="font-medium">Your answer:</span> {
-                              answers[index] !== undefined 
-                                ? question.options[answers[index]]
-                                : 'Not answered'
-                            }
-                          </p>
-                          <p className="text-sm text-green-600">
-                            <span className="font-medium">Correct answer:</span> {question.options[question.correctAnswerIndex]}
-                          </p>
-                          {question.explanation && (
-                            <p className="text-sm text-muted-foreground mt-2">
-                              <span className="font-medium">Explanation:</span> {question.explanation}
+              {quiz.quiz_data?.questions?.map((question, index) => {
+                // Get the correct answer index (handle both formats, ensure it's a number)
+                let correctAnswerIndex = question.correctAnswerIndex;
+                if (correctAnswerIndex === undefined || correctAnswerIndex === null) {
+                  correctAnswerIndex = question.correctAnswer;
+                }
+                
+                // Convert to number if it's a string
+                if (typeof correctAnswerIndex === 'string') {
+                  correctAnswerIndex = parseInt(correctAnswerIndex, 10);
+                }
+                
+                // Get the options array (handle both formats)
+                const questionOptions = question.options || question.answers || [];
+                
+                // Ensure we have valid data
+                const hasValidCorrectAnswer = typeof correctAnswerIndex === 'number' && 
+                  !isNaN(correctAnswerIndex) && 
+                  correctAnswerIndex >= 0 && 
+                  correctAnswerIndex < questionOptions.length;
+                
+                const isCorrect = hasValidCorrectAnswer && answers[index] === correctAnswerIndex;
+                
+                return (
+                  <Card key={index} className={`border-l-4 ${
+                    isCorrect ? 'border-l-green-500' : 'border-l-red-500'
+                  }`}>
+                    <CardContent className="pt-4">
+                      <div className="flex items-start gap-2 mb-2">
+                        {isCorrect ? (
+                          <CheckCircle className="h-5 w-5 text-green-500 mt-0.5" />
+                        ) : (
+                          <XCircle className="h-5 w-5 text-red-500 mt-0.5" />
+                        )}
+                        <div className="flex-1">
+                          <p className="font-medium">{question.question}</p>
+                          <div className="mt-2 space-y-1">
+                            <p className="text-sm">
+                              <span className="font-medium">Your answer:</span> {
+                                answers[index] !== undefined && questionOptions[answers[index]]
+                                  ? questionOptions[answers[index]]
+                                  : answers[index] !== undefined 
+                                    ? `Option ${answers[index] + 1} (Invalid)`
+                                    : 'Not answered'
+                              }
                             </p>
-                          )}
+                            <p className="text-sm text-green-600">
+                              <span className="font-medium">Correct answer:</span> {
+                                hasValidCorrectAnswer
+                                  ? questionOptions[correctAnswerIndex]
+                                  : `Invalid correct answer (${correctAnswerIndex})`
+                              }
+                            </p>
+                            {question.explanation && (
+                              <p className="text-sm text-muted-foreground mt-2">
+                                <span className="font-medium">Explanation:</span> {question.explanation}
+                              </p>
+                            )}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
+                    </CardContent>
+                  </Card>
+                );
+              })}
             </div>
             
             <div className="flex gap-4 justify-center">
@@ -351,7 +398,7 @@ export default function StudentQuizDetailPage() {
             value={answers[currentQuestion] !== undefined ? answers[currentQuestion].toString() : ''}
             onValueChange={(value) => handleAnswerChange(currentQuestion, parseInt(value))}
           >
-            {currentQ.options.map((option, index) => (
+            {(currentQ.options || currentQ.answers || []).map((option, index) => (
               <div key={index} className="flex items-center space-x-2">
                 <RadioGroupItem value={index.toString()} id={`option-${index}`} />
                 <Label htmlFor={`option-${index}`} className="flex-1 cursor-pointer">
