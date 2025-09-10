@@ -283,11 +283,15 @@ export async function POST(req: NextRequest) {
         return NextResponse.json(quiz);
       }
 
-      console.log('Quiz saved successfully to database');
-      return NextResponse.json(quiz);
+      console.log('Quiz saved successfully to database with ID:', savedQuiz.id);
+      // Return quiz data with the database ID
+      return NextResponse.json({
+        ...quiz,
+        id: savedQuiz.id // Use the database ID
+      });
     } catch (dbError) {
       console.error('Database error:', dbError);
-      // Still return the quiz data even if save fails
+      // Still return the quiz data even if save fails, but with generated ID
       return NextResponse.json(quiz);
     }
     

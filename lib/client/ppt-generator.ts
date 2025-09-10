@@ -16,7 +16,8 @@ export async function generateAndDownloadPresentation(
   subtitle: string | undefined,
   templateId: string,
   articleIds: string[],
-  aiEnabledArticles?: string[]
+  aiEnabledArticles?: string[],
+  quizLink?: string | null
 ): Promise<void> {
   console.log('🎯 Starting presentation generation with params:', {
     title,
@@ -37,7 +38,8 @@ export async function generateAndDownloadPresentation(
     subtitle,
     templateId: templateId,
     articleIds,
-    useAiForArticleIds: aiEnabledArticles || []
+    useAiForArticleIds: aiEnabledArticles || [],
+    quizLink: quizLink || null
   };
   
   console.log('📤 Sending request to API:', requestData);

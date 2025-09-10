@@ -10,10 +10,10 @@ export interface PPTTemplate {
 
 /**
  * Defines a single block of content on a slide.
- * This allows for mixing different types of content (paragraphs, lists).
+ * This allows for mixing different types of content (paragraphs, lists, QR codes).
  */
 export interface ContentBlock {
-  type: 'paragraph' | 'bullet';
+  type: 'paragraph' | 'bullet' | 'qr_code';
   text: string;
   level?: number; // For nested bullets
 }

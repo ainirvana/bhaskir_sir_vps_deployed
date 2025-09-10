@@ -84,6 +84,18 @@ export function PPTGenerator({ articles }: PPTGeneratorProps) {
     
     try {
       setIsGenerating(true);
+      let quizLink = null;
+      
+      // If quiz generation is enabled, generate the quiz FIRST
+      if (generateQuizEnabled) {
+        toast({
+          title: "Generating quiz first...",
+          description: "Creating quiz before presentation to include QR code",
+          duration: 3000,
+        });
+        
+        quizLink = await handleQuizGenerationForPresentation();
+      }
       
       // Use the client-safe function to generate and download the presentation
       await generateAndDownloadPresentation(
@@ -91,19 +103,17 @@ export function PPTGenerator({ articles }: PPTGeneratorProps) {
         subtitle,
         template,
         selectedArticles,
-        aiEnabledArticles // Pass AI-enabled article IDs
+        aiEnabledArticles, // Pass AI-enabled article IDs
+        quizLink // Pass quiz link for QR code slide
       );
       
       toast({
         title: "Success!",
-        description: "Your PowerPoint presentation has been generated",
+        description: generateQuizEnabled 
+          ? "Quiz created and presentation with QR code has been generated and downloaded"
+          : "Your PowerPoint presentation has been generated and downloaded",
         variant: "default"
       });
-      
-      // If quiz generation is enabled, generate the quiz after presentation is done
-      if (generateQuizEnabled) {
-        handleQuizGeneration();
-      }
       
     } catch (error: any) {
       console.error('Error generating presentation:', error);
@@ -117,7 +127,7 @@ export function PPTGenerator({ articles }: PPTGeneratorProps) {
     }
   };
   
-  // Handle quiz generation
+  // Handle quiz generation for standalone use
   const handleQuizGeneration = async () => {
     if (selectedArticles.length === 0) {
       toast({
@@ -158,6 +168,48 @@ export function PPTGenerator({ articles }: PPTGeneratorProps) {
         variant: "destructive",
         duration: 8000,
       });
+    } finally {
+      setIsGeneratingQuiz(false);
+    }
+  };
+
+  // Handle quiz generation for presentation (returns quiz link)
+  const handleQuizGenerationForPresentation = async (): Promise<string | null> => {
+    try {
+      setIsGeneratingQuiz(true);
+      
+      const response = await fetch('/api/generate-quiz', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          title: title || "Quiz on Selected Articles",
+          articleIds: selectedArticles,
+          questionsPerArticle: quizQuestionsPerArticle
+        }),
+      });
+      
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to generate quiz');
+      }
+      
+      const quizData = await response.json();
+      console.log('Quiz generation completed successfully:', quizData);
+      
+      // Return the student quiz link
+      const baseUrl = window.location.origin;
+      return `${baseUrl}/quizzes/${quizData.id}`;
+      
+    } catch (error: any) {
+      console.error('Error generating quiz for presentation:', error);
+      toast({
+        title: "Quiz Generation Failed",
+        description: error.message || 'Failed to generate quiz. Presentation will be created without QR code.',
+        variant: "destructive"
+      });
+      return null;
     } finally {
       setIsGeneratingQuiz(false);
     }
@@ -372,7 +424,7 @@ export function PPTGenerator({ articles }: PPTGeneratorProps) {
               ) : (
                 <>
                   <Presentation className="h-4 w-4" />
-                  {generateQuizEnabled ? 'Generate Presentation & Quiz' : 'Generate Presentation'}
+                  {generateQuizEnabled ? 'Generate Quiz & Presentation with QR Code' : 'Generate Presentation'}
                 </>
               )}
             </Button>

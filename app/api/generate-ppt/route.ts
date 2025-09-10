@@ -401,7 +401,7 @@ export async function POST(req: NextRequest) {
     const data = await req.json();
     console.log('🎯 PPT API received data:', data);
     
-    const { title, subtitle, templateId, articleIds, useAiForArticleIds = [] } = data;
+    const { title, subtitle, templateId, articleIds, useAiForArticleIds = [], quizLink = null } = data;
 
     // --- Validation ---
     if (!title || !templateId || !articleIds || !Array.isArray(articleIds) || articleIds.length === 0) {
@@ -476,9 +476,37 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    // --- ENHANCEMENT: REMOVED GENERIC SUMMARY SLIDE ---
-    // A real summary would require a separate, context-aware AI call.
-    // Removing the fake summary slide significantly improves presentation quality.
+    // Add QR code slide if quiz link is provided
+    if (quizLink) {
+      const qrCodeSlide: LogicalSlide = {
+        title: "📱 Take the Quiz!",
+        blocks: [
+          {
+            type: "bullet",
+            text: "Scan the QR code below to access the interactive quiz"
+          },
+          {
+            type: "bullet",
+            text: "Test your understanding of the topics covered"
+          },
+          {
+            type: "bullet",
+            text: "Get instant feedback on your answers"
+          },
+          {
+            type: "qr_code",
+            text: quizLink
+          },
+          {
+            type: "bullet",
+            text: `Quiz Link: ${quizLink}`
+          }
+        ],
+        keywords: ["Quiz", "Interactive", "Assessment", "QR Code"]
+      };
+      allLogicalSlides.push(qrCodeSlide);
+      console.log(`📱 Added QR code slide for quiz: ${quizLink}`);
+    }
 
     if (allLogicalSlides.length === 0) {
       console.error('❌ No slides generated from articles');

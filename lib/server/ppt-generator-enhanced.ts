@@ -720,6 +720,12 @@ class DynamicLayoutManager {
     this.currentY = CONTENT_START_Y;
   }
   public addContentBlock(block: ContentBlock, keywords: string[] = []) {
+    // Handle QR code blocks specially
+    if (block.type === 'qr_code') {
+      this.addQRCode(block.text);
+      return;
+    }
+    
     const isTitle = block.type === 'paragraph';
     const fontSize = isTitle ? 16 : 14;
     const bulletLevel = block.level || 0;
@@ -784,6 +790,54 @@ class DynamicLayoutManager {
       result.push({ text: part, options: isKeyword ? { bold: true, color: '2a6099' } : {} });
     }
     return result.length > 0 ? result : [{ text, options: {} }];
+  }
+
+  /**
+   * Add QR code to the slide
+   */
+  private addQRCode(url: string) {
+    try {
+      // Check if we have enough space for QR code (needs about 2 inches)
+      const qrCodeSize = 2.0;
+      const requiredSpace = qrCodeSize + 0.5; // QR code + some padding
+      
+      if (requiredSpace > this.getRemainingSpace() && this.currentY > CONTENT_START_Y) {
+        this.slide = this.createNewSlide();
+        this.continuationSlideCount++;
+      }
+      
+      // Center the QR code horizontally
+      const qrCodeX = (SLIDE_WIDTH - qrCodeSize) / 2;
+      
+      // Generate QR code URL using a free QR code API
+      const qrCodeImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(url)}`;
+      
+      // Add QR code image
+      this.slide.addImage({
+        path: qrCodeImageUrl,
+        x: qrCodeX,
+        y: this.currentY,
+        w: qrCodeSize,
+        h: qrCodeSize
+      });
+      
+      this.currentY += qrCodeSize + 0.2;
+      
+      console.log(`✅ Added QR code for: ${url}`);
+    } catch (error) {
+      console.error('❌ Error adding QR code:', error);
+      // Fallback: just add the URL as text
+      this.slide.addText(`Quiz URL: ${url}`, {
+        x: MARGIN,
+        y: this.currentY,
+        w: CONTENT_WIDTH,
+        h: 0.4,
+        fontSize: 12,
+        color: '666666',
+        align: 'center'
+      });
+      this.currentY += 0.6;
+    }
   }
 }
 
