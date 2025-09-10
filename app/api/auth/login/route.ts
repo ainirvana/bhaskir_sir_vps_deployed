@@ -48,8 +48,8 @@ export async function POST(request: NextRequest) {
 
     console.log('User logged in with email:', user.email)
     
-    // Return user data
-    return NextResponse.json({
+    // Create response with cookies
+    const response = NextResponse.json({
       success: true,
       user: {
         id: user.id,
@@ -58,6 +58,23 @@ export async function POST(request: NextRequest) {
         role: user.role
       }
     })
+    
+    // Set authentication cookies
+    response.cookies.set('auth-token', 'authenticated', {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+      maxAge: 60 * 60 * 24 * 7 // 7 days
+    })
+    
+    response.cookies.set('user-role', user.role, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+      maxAge: 60 * 60 * 24 * 7 // 7 days
+    })
+    
+    return response
 
   } catch (error) {
     console.error('Login error:', error)
