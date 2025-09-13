@@ -31,13 +31,22 @@ export async function POST(request: NextRequest) {
     // Check password
     let isValidPassword = false
     
-    if (user.email === 'careerexp@admin.com' && password === 'password') {
-      // Admin hardcoded password
+    if (user.email === 'admin@eduplatform.com' && password === 'admin123') {
+      // Primary admin hardcoded password
+      isValidPassword = true
+    } else if (user.email === 'careerexp@admin.com' && password === 'password') {
+      // Secondary admin hardcoded password
       isValidPassword = true
     } else if (user.password && user.password === password) {
       // Student password from database
       isValidPassword = true
     }
+    
+    console.log('Password validation:', { 
+      email: user.email, 
+      hasPassword: !!user.password, 
+      isValid: isValidPassword 
+    })
 
     if (!isValidPassword) {
       return NextResponse.json(
@@ -46,7 +55,13 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    console.log('User logged in with email:', user.email)
+    console.log('User logged in successfully:', { email: user.email, role: user.role })
+    
+    // Update last login
+    await supabase
+      .from('users')
+      .update({ last_login: new Date().toISOString() })
+      .eq('id', user.id)
     
     // Create response with cookies
     const response = NextResponse.json({
@@ -54,7 +69,7 @@ export async function POST(request: NextRequest) {
       user: {
         id: user.id,
         email: user.email,
-        full_name: user.full_name,
+        full_name: user.full_name || user.name || 'User',
         role: user.role
       }
     })
@@ -77,9 +92,9 @@ export async function POST(request: NextRequest) {
     return response
 
   } catch (error) {
-    console.error('Login error:', error)
+    console.error('Login API error:', error)
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { error: 'Internal server error', details: error.message },
       { status: 500 }
     )
   }

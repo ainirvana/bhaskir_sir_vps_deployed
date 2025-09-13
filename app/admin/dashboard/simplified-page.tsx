@@ -49,10 +49,20 @@ export default function SimplifiedAdminDashboard() {
 
   const handleSignOut = async () => {
     try {
-      // Simple sign out - redirect to login
+      // Clear local storage
+      localStorage.removeItem('user')
+      localStorage.removeItem('userEmail')
+      localStorage.removeItem('userRole')
+      
+      // Call logout API to clear cookies
+      await fetch('/api/auth/logout', { method: 'POST' })
+      
+      // Redirect to login
       window.location.href = '/auth/login';
     } catch (error) {
       console.error('Sign out error:', error);
+      // Force redirect even if API call fails
+      window.location.href = '/auth/login';
     }
   };
 
