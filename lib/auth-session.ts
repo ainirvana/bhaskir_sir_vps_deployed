@@ -1,9 +1,9 @@
 import { cookies } from 'next/headers';
 import { createServerClient } from './supabase-server';
-import type { User } from '@/types/user';
+import type { User } from '@/types/auth';
 
 export async function getAuthSession() {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const authToken = cookieStore.get('auth-token')?.value;
   const userRole = cookieStore.get('user-role')?.value;
   const userEmail = cookieStore.get('user-email')?.value;
