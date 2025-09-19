@@ -36,11 +36,37 @@ export function SimpleDbLogin() {
           description: 'Welcome back!'
         })
         
-        if (data.user.role === 'admin') {
-          router.push('/admin/dashboard')
-        } else {
-          router.push('/student')
+        // Enhanced redirection logic with retry mechanism
+        const redirect = async (attempts = 0) => {
+          try {
+            // Verify auth state
+            const authCheck = await fetch('/api/auth/check')
+            const authState = await authCheck.json()
+            
+            if (!authState.authenticated && attempts < 3) {
+              // Retry after delay with exponential backoff
+              setTimeout(() => redirect(attempts + 1), Math.pow(2, attempts) * 1000)
+              return
+            }
+            
+            if (data.user.role === 'admin') {
+              window.location.replace('/admin/dashboard')
+            } else {
+              window.location.replace('/student/dashboard')
+            }
+          } catch (err) {
+            console.error('Auth check failed:', err)
+            if (attempts < 3) {
+              setTimeout(() => redirect(attempts + 1), Math.pow(2, attempts) * 1000)
+            } else {
+              // Final fallback
+              window.location.replace(data.user.role === 'admin' ? '/admin/dashboard' : '/student/dashboard')
+            }
+          }
         }
+        
+        // Start redirection process with initial delay
+        setTimeout(() => redirect(), 1000)
       } else {
         toast({
           title: 'Login failed',
